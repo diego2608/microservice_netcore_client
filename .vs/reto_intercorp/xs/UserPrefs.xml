@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{1B50620F-EE72-46C0-B10C-A4CDFD351318}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/ClientController.cs">
+    <Files>
+      <File FileName="Controllers/ClientController.cs" Line="78" Column="19" />
+      <File FileName="Util/FirebaseUTIL.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="reto_intercorp" expanded="True">
+            <Node name="reto_intercorp" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="ClientController.cs" selected="True" />
+              </Node>
+              <Node name="Util" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.reto__intercorp PreferredExecutionTarget="/Applications/Microsoft Edge.app" />
+</Properties>

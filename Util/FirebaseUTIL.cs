@@ -97,7 +97,7 @@ namespace reto_intercorp.Util
                         Name = client.Object.Name,
                         Last_Name = client.Object.Last_Name,
                         Age = client.Object.Age,
-                        Birthday = DateTime.Parse(client.Object.Birthday),
+                        Birthday = DateTime.ParseExact(client.Object.Birthday, "dd/MM/yyyy", null),
 
                     });
 

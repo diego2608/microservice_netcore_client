@@ -11,12 +11,12 @@ using reto_intercorp.ViewModel;
 namespace reto_intercorp.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ClientController : ControllerBase
     {
-        // GET: Client
+
         [HttpGet]
-        //[Route("list")]
+        [Route("")]
         public ActionResult<IEnumerable<ClientViewModel>> Get()
         {
 
@@ -39,6 +39,7 @@ namespace reto_intercorp.Controllers
 
         [HttpGet]
         [Route("kpideclientes​")]
+        [ActionName("kpidecliente")]
         public ActionResult<KPIClientViewModel> kpiClients()
         {
 
@@ -76,7 +77,8 @@ namespace reto_intercorp.Controllers
 
         [HttpPost]
         [Route("creacliente​")]
-        public ActionResult Create(ClientViewModel model) 
+        [ActionName("creaclient")]
+        public ActionResult<bool> Create(ClientViewModel model) 
         {
 
             try
@@ -87,7 +89,7 @@ namespace reto_intercorp.Controllers
                     Name = model.Name,
                     Last_Name = model.Last_Name,
                     Age = model.Age,
-                    Birthday = model.Birthday.ToString("dd/M/yyyy", CultureInfo.InvariantCulture)
+                    Birthday = model.Birthday.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)
                 });
 
                 return Ok(result);
@@ -99,8 +101,6 @@ namespace reto_intercorp.Controllers
             }
 
         }
-
-
 
     }
 }
