@@ -1,9 +1,6 @@
 ﻿using Firebase.Database;
 using Firebase.Database.Query;
-using FirebaseAdmin;
-using FirebaseAdmin.Auth;
-using FirebaseAdmin.Messaging;
-using Google.Apis.Auth.OAuth2;
+
 using reto_intercorp.Models;
 using reto_intercorp.ViewModel;
 using System;
@@ -24,30 +21,30 @@ namespace reto_intercorp.Util
                               AuthTokenAsyncFactory = () => Task.FromResult(auth)
                           });
 
-        public void StartAuth()
-        {
+        //public void StartAuth()
+        //{
 
-            try
-            {
+        //    try
+        //    {
 
-                // Initialize the default app
-                String path_file = Path.Combine("App_Data", "tawaapp_a3228_firebase_adminsdk.json");
+        //        // Initialize the default app
+        //        String path_file = Path.Combine("App_Data", "tawaapp_a3228_firebase_adminsdk.json");
 
-                var defaultApp = FirebaseApp.Create(new AppOptions()
-                {
-                    Credential = GoogleCredential.FromFile(path_file),
-                });
+        //        var defaultApp = FirebaseApp.Create(new AppOptions()
+        //        {
+        //            Credential = GoogleCredential.FromFile(path_file),
+        //        });
 
-                // Retrieve services by passing the defaultApp variable...
-                var defaultAuth = FirebaseAuth.GetAuth(defaultApp);
+        //        // Retrieve services by passing the defaultApp variable...
+        //        var defaultAuth = FirebaseAuth.GetAuth(defaultApp);
 
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
 
-        }
+        //}
 
         public async Task<bool> saveClientAsync(Client client)
         {
@@ -59,11 +56,11 @@ namespace reto_intercorp.Util
                 var dino = await firebaseClient
                     .Child("clients")
                     .PostAsync(client);
-
-                register = true;
+                
+                register = true; 
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 throw;
             }
@@ -113,81 +110,82 @@ namespace reto_intercorp.Util
 
         }
 
-        public async Task sendMessage_To_Specific_DeviceAsync(String registrationToken, String title, String body)
-        {
+        //public async Task sendMessage_To_Specific_DeviceAsync(String registrationToken, String title, String body)
+        //{
 
-            try
-            {
+        //    try
+        //    {
 
-                var message = new Message()
-                {
-                    Data = new Dictionary<string, string>()
-                    {
-                        { "Title", title },
-                        { "Body", body },
-                    },
-                    Token = registrationToken,
-                    Notification = new Notification()
-                    {
-                        Title = title,
-                        Body = body
-                    },
-                };
+        //        var message = new Message()
+        //        {
+        //            Data = new Dictionary<string, string>()
+        //            {
+        //                { "Title", title },
+        //                { "Body", body },
+        //            },
+        //            Token = registrationToken,
+        //            Notification = new Notification()
+        //            {
+        //                Title = title,
+        //                Body = body
+        //            },
+        //        };
 
-                string response = await FirebaseMessaging.DefaultInstance.SendAsync(message).ConfigureAwait(false); ;
+        //        string response = await FirebaseMessaging.DefaultInstance.SendAsync(message).ConfigureAwait(false); ;
 
-                Console.WriteLine("Successfully sent message: " + response);
+        //        Console.WriteLine("Successfully sent message: " + response);
 
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw new Exception(e.Message);
+        //    }
 
-        }
+        //}
 
-        public async Task sendMessage_To_Multiple_DeviceAsync(List<String> registrationTokens, String title, String body)
-        {
+        //public async Task sendMessage_To_Multiple_DeviceAsync(List<String> registrationTokens, String title, String body)
+        //{
 
-            var message = new MulticastMessage()
-            {
+        //    var message = new MulticastMessage()
+        //    {
 
-                Tokens = registrationTokens,
-                Data = new Dictionary<string, string>()
-                {
-                    { "Title", title },
-                    { "Body", body },
-                },
-                Notification = new Notification()
-                {
-                    Title = title,
-                    Body = body
-                },
+        //        Tokens = registrationTokens,
+        //        Data = new Dictionary<string, string>()
+        //        {
+        //            { "Title", title },
+        //            { "Body", body },
+        //        },
+        //        Notification = new Notification()
+        //        {
+        //            Title = title,
+        //            Body = body
+        //        },
 
-            };
+        //    };
 
-            var response = await FirebaseMessaging.DefaultInstance.SendMulticastAsync(message);
+        //    var response = await FirebaseMessaging.DefaultInstance.SendMulticastAsync(message);
 
-            Console.WriteLine($"{response.SuccessCount} messages were sent successfully");
+        //    Console.WriteLine($"{response.SuccessCount} messages were sent successfully");
 
-            if (response.FailureCount > 0)
-            {
+        //    if (response.FailureCount > 0)
+        //    {
 
-                var failedTokens = new List<string>();
+        //        var failedTokens = new List<string>();
 
-                for (var i = 0; i < response.Responses.Count; i++)
-                {
-                    if (!response.Responses[i].IsSuccess)
-                    {
-                        // The order of responses corresponds to the order of the registration tokens.
-                        failedTokens.Add(registrationTokens[i]);
-                    }
-                }
+        //        for (var i = 0; i < response.Responses.Count; i++)
+        //        {
+        //            if (!response.Responses[i].IsSuccess)
+        //            {
+        //                // The order of responses corresponds to the order of the registration tokens.
+        //                failedTokens.Add(registrationTokens[i]);
+        //            }
+        //        }
 
-                Console.WriteLine($"List of tokens that caused failures: {failedTokens}");
+        //        Console.WriteLine($"List of tokens that caused failures: {failedTokens}");
 
-            }
+        //    }
 
-        }
+        //}
+
     }
 }

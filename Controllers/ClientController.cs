@@ -11,12 +11,10 @@ using reto_intercorp.ViewModel;
 namespace reto_intercorp.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/client")]
     public class ClientController : ControllerBase
     {
-
         [HttpGet]
-        [Route("")]
         public ActionResult<IEnumerable<ClientViewModel>> Get()
         {
 
@@ -37,9 +35,13 @@ namespace reto_intercorp.Controllers
 
         }
 
-        [HttpGet]
-        [Route("kpideclientes​")]
-        [ActionName("kpidecliente")]
+        [HttpGet("tests")]
+        public ActionResult Test()
+        {
+            return Ok();
+        }
+
+        [HttpGet("kpideclientes")]
         public ActionResult<KPIClientViewModel> kpiClients()
         {
 
@@ -75,16 +77,17 @@ namespace reto_intercorp.Controllers
 
         }
 
-        [HttpPost]
-        [Route("creacliente​")]
-        [ActionName("creaclient")]
-        public ActionResult<bool> Create(ClientViewModel model) 
+
+
+        [HttpPost("creacliente")]
+        public async Task<ActionResult<bool>> Create(ClientViewModel model)
         {
 
             try
             {
                 FirebaseUTIL firebase = new FirebaseUTIL();
-                var result = firebase.saveClientAsync(new Models.Client { 
+                var result = await firebase.saveClientAsync(new Models.Client
+                {
                     ClientId = Guid.NewGuid().ToString(),
                     Name = model.Name,
                     Last_Name = model.Last_Name,
@@ -95,7 +98,7 @@ namespace reto_intercorp.Controllers
                 return Ok(result);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }

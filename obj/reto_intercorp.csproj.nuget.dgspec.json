@@ -1,28 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/diego/Desktop/microservice_netcore_client/reto_intercorp.csproj": {}
+    "C:\\Users\\Diego\\source\\repos\\reto_intercorp\\reto_intercorp.csproj": {}
   },
   "projects": {
-    "/Users/diego/Desktop/microservice_netcore_client/reto_intercorp.csproj": {
+    "C:\\Users\\Diego\\source\\repos\\reto_intercorp\\reto_intercorp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/diego/Desktop/microservice_netcore_client/reto_intercorp.csproj",
+        "projectUniqueName": "C:\\Users\\Diego\\source\\repos\\reto_intercorp\\reto_intercorp.csproj",
         "projectName": "reto_intercorp",
-        "projectPath": "/Users/diego/Desktop/microservice_netcore_client/reto_intercorp.csproj",
-        "packagesPath": "/Users/diego/.nuget/packages/",
-        "outputPath": "/Users/diego/Desktop/microservice_netcore_client/obj/",
+        "projectPath": "C:\\Users\\Diego\\source\\repos\\reto_intercorp\\reto_intercorp.csproj",
+        "packagesPath": "C:\\Users\\Diego\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Diego\\source\\repos\\reto_intercorp\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "/Users/diego/.config/NuGet/NuGet.Config"
+          "C:\\Users\\Diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,10 +38,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "FirebaseAdmin": {
-              "target": "Package",
-              "version": "[1.9.2, )"
-            },
             "FirebaseDatabase.net": {
               "target": "Package",
               "version": "[4.0.4, )"
@@ -74,7 +69,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
