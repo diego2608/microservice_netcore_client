@@ -27,7 +27,10 @@ namespace reto_intercorp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            
+
+            services.AddCors(); // Make sure you call this previous to AddMvc
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
+
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
@@ -49,6 +52,12 @@ namespace reto_intercorp
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(
+                options => options.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+            );
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();

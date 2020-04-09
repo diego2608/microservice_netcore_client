@@ -35,12 +35,6 @@ namespace reto_intercorp.Controllers
 
         }
 
-        [HttpGet("tests")]
-        public ActionResult Test()
-        {
-            return Ok();
-        }
-
         [HttpGet("kpideclientes")]
         public ActionResult<KPIClientViewModel> kpiClients()
         {
@@ -60,7 +54,7 @@ namespace reto_intercorp.Controllers
                 var sd = Math.Sqrt(var / ages.Length);
 
                 var data = ages.GroupBy(x=>x)
-                    .Select(z => new Data { age = z.Key, count = z.Count()}).ToList();
+                    .Select(z => new Data { age = z.Key, count = z.Count()}).OrderBy(x=>x.age).ToList();
 
               
                 kpiClient.avg_age = (int)avg_age;
